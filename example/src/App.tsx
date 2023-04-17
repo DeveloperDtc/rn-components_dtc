@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react'
-import RNModuleTemplateModule, { Counter } from 'react-native-module-template'
+import RNModuleTemplateModule, { Counter } from 'rn-components_dtc'
 
 const App = () => {
   useEffect(() => {

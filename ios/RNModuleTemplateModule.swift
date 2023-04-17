@@ -2,7 +2,7 @@
 //  RNModuleTemplateModule.swift
 //  RNModuleTemplateModule
 //
-//  Copyright © 2022 Alex Demchenko. All rights reserved.
+//  Copyright © 2022 Devs. All rights reserved.
 //
 
 import Foundation
