@@ -1,12 +1,18 @@
 import React, { useEffect } from 'react'
-import RNModuleTemplateModule, { Counter } from 'rn-components_dtc'
+import { View } from 'react-native'
+import RNModuleTemplateModule, { Counter, Button } from 'rn-components_dtc'
 
 const App = () => {
   useEffect(() => {
     console.log(RNModuleTemplateModule)
   })
 
-  return <Counter />
+  return (
+    <View style={{ flex: 1, alignItems: 'center' }}>
+      <Button />
+      <Counter />
+    </View>
+  )
 }
 
 export default App

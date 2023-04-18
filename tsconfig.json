@@ -12,6 +12,11 @@
     "sourceMap": true,
     "strict": true,
     "target": "ES2018",
+    // "baseUrl": "./",
+    // "paths": {
+    //   "@components": ["src/components/index"],
+    //   "@components/*": ["src/components/*"]
+    // }
   },
   "exclude": ["**/__tests__/*"],
   "include": ["src"]
