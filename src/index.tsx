@@ -1,7 +1,7 @@
 import { NativeModules } from 'react-native'
 
-import { Button, Counter } from './components'
+import { Button, Counter, TextInputComponent } from './components'
 
-export { Button, Counter }
+export { Button, Counter, TextInputComponent }
 
 export default NativeModules.RNModuleTemplateModule
