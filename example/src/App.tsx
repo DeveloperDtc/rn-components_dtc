@@ -1,9 +1,10 @@
 import React, { useEffect } from 'react'
-import { View } from 'react-native'
+import { Image, View } from 'react-native'
 import RNModuleTemplateModule, {
   Counter,
   Button,
   TextInputComponent,
+  ImageCpn,
 } from 'rn-components_dtc'
 
 const App = () => {
@@ -23,7 +24,8 @@ const App = () => {
         // alignItems: 'center',
       }}
     >
-      <Button text='test' onPressBtn={() => {}} />
+      {/* <Button text='test' onPressBtn={() => {}} /> */}
+      <ImageCpn typeVectorIcon='AntDesign' iconName='plus' sizeIcon={50} />
     </View>
   )
 }

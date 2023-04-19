@@ -6,6 +6,7 @@ import com.devs.rncomponents_dtc.RNModuleTemplatePackage
 import com.facebook.react.*
 import com.facebook.soloader.SoLoader
 import java.lang.reflect.InvocationTargetException
+import com.oblador.vectoricons.VectorIconsPackage
 
 class MainApplication : Application(), ReactApplication {
 
@@ -18,7 +19,8 @@ class MainApplication : Application(), ReactApplication {
             val packages = PackageList(this).packages
             // Packages that cannot be autolinked yet can be added manually here, for example:
             // packages.add(MyReactNativePackage());
-            packages.add(RNModuleTemplatePackage())
+            packages.add(RNModuleTemplatePackage());
+            // packages.add(VectorIconsPackage());
             return packages
         }
 
