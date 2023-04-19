@@ -1,5 +1,5 @@
 import React from 'react'
-import { Image, StyleSheet, View } from 'react-native'
+import { Image, StyleSheet, TouchableOpacity, View } from 'react-native'
 
 import { Icons } from '../../themes'
 
@@ -26,6 +26,7 @@ interface OwnProps {
     | 'Octicons'
     | 'SimpleLineIcons'
     | 'Zocial'
+  onPressItem?: (evt?: any) => void
 }
 
 type Props = OwnProps
@@ -40,6 +41,7 @@ export const ImageCpn: React.FunctionComponent<Props> = (props) => {
     image,
     resizeMode = 'contain',
     typeVectorIcon = 'AntDesign',
+    onPressItem = () => {},
   } = props
 
   return iconName ? (
@@ -50,6 +52,7 @@ export const ImageCpn: React.FunctionComponent<Props> = (props) => {
           size={sizeIcon}
           color={colorIcon}
           style={[imgStyle]}
+          onPress={onPressItem}
         />
       )}
       {typeVectorIcon === 'Entypo' && (
@@ -58,6 +61,7 @@ export const ImageCpn: React.FunctionComponent<Props> = (props) => {
           size={sizeIcon}
           color={colorIcon}
           style={[imgStyle]}
+          onPress={onPressItem}
         />
       )}
       {typeVectorIcon === 'EvilIcons' && (
@@ -66,6 +70,7 @@ export const ImageCpn: React.FunctionComponent<Props> = (props) => {
           size={sizeIcon}
           color={colorIcon}
           style={[imgStyle]}
+          onPress={onPressItem}
         />
       )}
       {typeVectorIcon === 'Feather' && (
@@ -74,6 +79,7 @@ export const ImageCpn: React.FunctionComponent<Props> = (props) => {
           size={sizeIcon}
           color={colorIcon}
           style={[imgStyle]}
+          onPress={onPressItem}
         />
       )}
       {typeVectorIcon === 'FontAwesome' && (
@@ -82,6 +88,7 @@ export const ImageCpn: React.FunctionComponent<Props> = (props) => {
           size={sizeIcon}
           color={colorIcon}
           style={[imgStyle]}
+          onPress={onPressItem}
         />
       )}
       {typeVectorIcon === 'FontAwesome5' && (
@@ -90,6 +97,7 @@ export const ImageCpn: React.FunctionComponent<Props> = (props) => {
           size={sizeIcon}
           color={colorIcon}
           style={[imgStyle]}
+          onPress={onPressItem}
         />
       )}
       {typeVectorIcon === 'Fontisto' && (
@@ -98,6 +106,7 @@ export const ImageCpn: React.FunctionComponent<Props> = (props) => {
           size={sizeIcon}
           color={colorIcon}
           style={[imgStyle]}
+          onPress={onPressItem}
         />
       )}
       {typeVectorIcon === 'Foundation' && (
@@ -106,6 +115,7 @@ export const ImageCpn: React.FunctionComponent<Props> = (props) => {
           size={sizeIcon}
           color={colorIcon}
           style={[imgStyle]}
+          onPress={onPressItem}
         />
       )}
       {typeVectorIcon === 'Ionicons' && (
@@ -114,6 +124,7 @@ export const ImageCpn: React.FunctionComponent<Props> = (props) => {
           size={sizeIcon}
           color={colorIcon}
           style={[imgStyle]}
+          onPress={onPressItem}
         />
       )}
       {typeVectorIcon === 'MaterialCommunityIcons' && (
@@ -122,6 +133,7 @@ export const ImageCpn: React.FunctionComponent<Props> = (props) => {
           size={sizeIcon}
           color={colorIcon}
           style={[imgStyle]}
+          onPress={onPressItem}
         />
       )}
       {typeVectorIcon === 'MaterialIcons' && (
@@ -130,6 +142,7 @@ export const ImageCpn: React.FunctionComponent<Props> = (props) => {
           size={sizeIcon}
           color={colorIcon}
           style={[imgStyle]}
+          onPress={onPressItem}
         />
       )}
       {typeVectorIcon === 'Octicons' && (
@@ -138,6 +151,7 @@ export const ImageCpn: React.FunctionComponent<Props> = (props) => {
           size={sizeIcon}
           color={colorIcon}
           style={[imgStyle]}
+          onPress={onPressItem}
         />
       )}
       {typeVectorIcon === 'SimpleLineIcons' && (
@@ -146,6 +160,7 @@ export const ImageCpn: React.FunctionComponent<Props> = (props) => {
           size={sizeIcon}
           color={colorIcon}
           style={[imgStyle]}
+          onPress={onPressItem}
         />
       )}
       {typeVectorIcon === 'Zocial' && (
@@ -154,17 +169,18 @@ export const ImageCpn: React.FunctionComponent<Props> = (props) => {
           size={sizeIcon}
           color={colorIcon}
           style={[imgStyle]}
+          onPress={onPressItem}
         />
       )}
     </View>
   ) : (
-    <View style={styles.container}>
+    <TouchableOpacity style={styles.container} onPress={onPressItem}>
       <Image
         source={{ uri: imageUrl } || image}
         style={[imgStyle]}
         resizeMode={resizeMode}
       />
-    </View>
+    </TouchableOpacity>
   )
 }
 

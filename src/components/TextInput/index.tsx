@@ -23,6 +23,7 @@ interface OwnProps {
   childrenRight?: React.ReactNode
   childrenRightStyle?: StyleProp<ViewStyle>
   textInputStyle?: StyleProp<ViewStyle>
+  containerViewInputStyle?: StyleProp<ViewStyle>
 }
 
 type Props = OwnProps
@@ -39,6 +40,7 @@ export const TextInputComponent: React.FunctionComponent<Props> = (props) => {
     childrenRight,
     childrenRightStyle,
     textInputStyle,
+    containerViewInputStyle,
   } = props
 
   const onFocusCustom = (e: any) => {
@@ -54,7 +56,7 @@ export const TextInputComponent: React.FunctionComponent<Props> = (props) => {
   }
 
   return (
-    <View style={styles.container}>
+    <View style={[styles.container, containerViewInputStyle]}>
       <View style={[childrenLeftStyle]}>{childrenLeft}</View>
       <View style={[styles.textInput, textInputStyle]}>
         <TextInput
