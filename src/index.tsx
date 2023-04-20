@@ -6,6 +6,8 @@ import {
   CollapseViewV2,
   Counter,
   ImageCpn,
+  ModalComponent,
+  RadioComponent,
   TextInputComponent,
 } from './components'
 
@@ -15,6 +17,8 @@ export {
   CollapseViewV2,
   Counter,
   ImageCpn,
+  ModalComponent,
+  RadioComponent,
   TextInputComponent,
 }
 

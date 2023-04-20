@@ -9,12 +9,12 @@ import {
   useColorScheme,
 } from 'react-native'
 import RNModuleTemplateModule, {
-  Counter,
   Button,
   TextInputComponent,
   ImageCpn,
   CollapseView,
   CollapseViewV2,
+  RadioComponent,
 } from 'rn-components_dtc'
 import { Colors, Header } from 'react-native/Libraries/NewAppScreen'
 import { Icons } from '../../src/themes'
@@ -98,6 +98,14 @@ const App = () => {
             </View>
             <ImageCpn typeVectorIcon='AntDesign' iconName='minus' />
             <CollapseViewV2 />
+            <RadioComponent
+              titleLeft={'Chỉ chặng bay thẳng'}
+              customStyleContainer={{ marginTop: 10 }}
+              value={null}
+              onChangeSwitch={(bool) => {
+                console.log('changed status')
+              }}
+            />
           </View>
         </View>
       </ScrollView>

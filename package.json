@@ -1,7 +1,7 @@
 {
   "name": "rn-components_dtc",
-  "version": "1.0.2",
-  "description": "test vector icon image",
+  "version": "1.0.4",
+  "description": "test text collapse view",
   "homepage": "https://github.com/DeveloperDtc/rn-components_dtc#readme",
   "main": "lib/index.js",
   "types": "lib/index.d.ts",
