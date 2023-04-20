@@ -2,6 +2,7 @@ import React from 'react'
 import {
   NativeSyntheticEvent,
   StyleProp,
+  Text,
   TextInput,
   TextInputFocusEventData,
   TextStyle,
@@ -24,6 +25,7 @@ interface OwnProps {
   childrenRightStyle?: StyleProp<ViewStyle>
   textInputStyle?: StyleProp<ViewStyle>
   containerViewInputStyle?: StyleProp<ViewStyle>
+  errorText?: string
 }
 
 type Props = OwnProps
@@ -41,6 +43,7 @@ export const TextInputComponent: React.FunctionComponent<Props> = (props) => {
     childrenRightStyle,
     textInputStyle,
     containerViewInputStyle,
+    errorText,
   } = props
 
   const onFocusCustom = (e: any) => {
@@ -56,19 +59,26 @@ export const TextInputComponent: React.FunctionComponent<Props> = (props) => {
   }
 
   return (
-    <View style={[styles.container, containerViewInputStyle]}>
-      <View style={[childrenLeftStyle]}>{childrenLeft}</View>
-      <View style={[styles.textInput, textInputStyle]}>
-        <TextInput
-          value={value}
-          onChangeText={onChangeText}
-          placeholder={placeholder}
-          onFocus={onFocusCustom}
-          onBlur={onBlurCustom}
-          style={[styles.input]}
-        />
+    <View style={{ flex: 1, justifyContent: 'center' }}>
+      <View style={[styles.container, containerViewInputStyle]}>
+        <View style={[childrenLeftStyle]}>{childrenLeft}</View>
+        <View style={[styles.textInput, textInputStyle]}>
+          <TextInput
+            value={value}
+            onChangeText={onChangeText}
+            placeholder={placeholder}
+            onFocus={onFocusCustom}
+            onBlur={onBlurCustom}
+            style={[styles.input]}
+          />
+        </View>
+        <View style={[childrenRightStyle]}>{childrenRight}</View>
       </View>
-      <View style={[childrenRightStyle]}>{childrenRight}</View>
+      {errorText ? (
+        <Text style={styles.errorTxt}>{errorText}</Text>
+      ) : (
+        <Text style={[styles.errorTxt, { opacity: 0 }]}>hide</Text>
+      )}
     </View>
   )
 }

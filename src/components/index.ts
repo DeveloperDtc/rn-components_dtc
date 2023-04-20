@@ -1,5 +1,6 @@
 export * from './Button'
 export * from './CollapseView'
+export * from './CollapseViewV2'
 export * from './Counter'
 export * from './ImageCpn'
 export * from './TextInput'

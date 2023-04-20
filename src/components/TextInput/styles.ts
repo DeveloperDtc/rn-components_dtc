@@ -22,4 +22,11 @@ export const styles = StyleSheet.create({
     color: 'black',
     width: '100%',
   },
+  errorTxt: {
+    color: 'red',
+    fontSize: 10,
+    fontWeight: '400',
+    marginHorizontal: 10,
+    marginTop: -8,
+  },
 })

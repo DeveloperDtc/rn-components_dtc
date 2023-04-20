@@ -14,6 +14,7 @@ import RNModuleTemplateModule, {
   TextInputComponent,
   ImageCpn,
   CollapseView,
+  CollapseViewV2,
 } from 'rn-components_dtc'
 import { Colors, Header } from 'react-native/Libraries/NewAppScreen'
 import { Icons } from '../../src/themes'
@@ -58,6 +59,7 @@ const App = () => {
             <TextInputComponent
               containerViewInputStyle={{ marginBottom: 10 }}
               textInputStyle={{ borderWidth: 2 }}
+              errorText='loi roi kia lam lai di'
             />
             <ImageCpn
               typeVectorIcon='AntDesign'
@@ -95,6 +97,7 @@ const App = () => {
               </CollapseView>
             </View>
             <ImageCpn typeVectorIcon='AntDesign' iconName='minus' />
+            <CollapseViewV2 />
           </View>
         </View>
       </ScrollView>
