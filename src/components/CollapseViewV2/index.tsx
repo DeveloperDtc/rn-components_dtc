@@ -1,11 +1,14 @@
-import React, { useCallback, useEffect, useRef, useState } from 'react'
+import React, { useCallback, useEffect, useMemo, useRef, useState } from 'react'
 import { Animated, StyleSheet, Text, View } from 'react-native'
+
+import { Icons } from '../../themes'
 
 interface OwnProps {
   lineDefault?: number
   textData?: string
   textMore?: string
   textCollapse?: string
+  icons?: Array<any>
 }
 
 type Props = OwnProps
@@ -19,6 +22,10 @@ export const CollapseViewV2: React.FunctionComponent<Props> = (props) => {
     textData = textDataDemo,
     textMore = 'More',
     textCollapse = 'Collapse',
+    icons = [
+      <Icons.AntDesign name='caretdown' color={'black'} size={14} />,
+      <Icons.AntDesign name='caretup' color={'black'} size={14} />,
+    ],
   } = props
   const [collapsed, setCollapsed] = useState<boolean>(true)
   const [maxLines, setMaxLines] = useState<number>(lineDefault)
@@ -49,6 +56,10 @@ export const CollapseViewV2: React.FunctionComponent<Props> = (props) => {
     collapsed ? collapseView() : expandView()
   }, [collapseView, collapsed, expandView])
 
+  const renderIconCollapseOrExpand = useMemo(() => {
+    return collapsed ? icons[0] : icons[1]
+  }, [collapsed, icons])
+
   return (
     // eslint-disable-next-line react-native/no-inline-styles
     <View style={{ overflow: 'hidden' }}>
@@ -57,9 +68,13 @@ export const CollapseViewV2: React.FunctionComponent<Props> = (props) => {
           {textData}
         </Text>
       </Animated.View>
-      <Text onPress={toggleCollapsed} style={styles.textMoreOrCollapse}>
-        {collapsed ? textMore : textCollapse}
-      </Text>
+      {icons ? (
+        renderIconCollapseOrExpand
+      ) : (
+        <Text onPress={toggleCollapsed} style={styles.textMoreOrCollapse}>
+          {collapsed ? textMore : textCollapse}
+        </Text>
+      )}
     </View>
   )
 }

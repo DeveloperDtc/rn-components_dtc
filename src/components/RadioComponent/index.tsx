@@ -16,6 +16,9 @@ interface OwnProps {
   onChangeSwitch?: (value?: any) => void
   customStyleContainer?: StyleProp<ViewStyle>
   customStyleTextLeft?: StyleProp<TextStyle>
+  trackColorFalse?: string
+  trackColorTrue?: string
+  thumbColor?: string
 }
 
 type Props = OwnProps
@@ -27,6 +30,9 @@ export const RadioComponent: FunctionComponent<Props> = (props) => {
     onChangeSwitch,
     customStyleContainer,
     customStyleTextLeft,
+    trackColorFalse = 'gray',
+    trackColorTrue = 'blue',
+    thumbColor = 'orange',
   } = props
   const [mValue, setMValue] = useState<any>(value)
 
@@ -43,8 +49,8 @@ export const RadioComponent: FunctionComponent<Props> = (props) => {
           styles.switch,
           { transform: [{ scaleX: 0.8 }, { scaleY: 0.8 }] },
         ]}
-        trackColor={{ false: 'gray', true: 'blue' }}
-        thumbColor={'orange'}
+        trackColor={{ false: trackColorFalse, true: trackColorTrue }}
+        thumbColor={thumbColor}
         ios_backgroundColor={'white'}
         onValueChange={_onChangeSwitch}
         value={mValue}

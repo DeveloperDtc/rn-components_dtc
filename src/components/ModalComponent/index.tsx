@@ -30,6 +30,7 @@ interface OwnProps {
   isDisableBtnAccept?: boolean
   colorCheckbox?: any
   sizeCheckbox?: number
+  isShowButtonAccpet?: boolean
 }
 
 type Props = OwnProps
@@ -54,6 +55,7 @@ export const ModalComponent: FunctionComponent<Props> = (props) => {
     isDisableBtnAccept,
     colorCheckbox = 'blue',
     sizeCheckbox = 16,
+    isShowButtonAccpet = true,
   } = props
 
   return (
@@ -95,13 +97,15 @@ export const ModalComponent: FunctionComponent<Props> = (props) => {
             </Text>
           )}
           <View style={styles.footerModalContainer}>
-            <TouchableOpacity
-              style={[styles.btnAccept, customStyleBtnAccept]}
-              disabled={isDisableBtnAccept}
-              onPress={onPressBtnAccept}
-            >
-              <Text style={styles.txtAccept}>{titleBtnAccept}</Text>
-            </TouchableOpacity>
+            {isShowButtonAccpet && (
+              <TouchableOpacity
+                style={[styles.btnAccept, customStyleBtnAccept]}
+                disabled={isDisableBtnAccept}
+                onPress={onPressBtnAccept}
+              >
+                <Text style={styles.txtAccept}>{titleBtnAccept}</Text>
+              </TouchableOpacity>
+            )}
             {hasCancelButton && (
               <TouchableOpacity
                 style={[styles.btnCancel, customStyleBtnCancel]}

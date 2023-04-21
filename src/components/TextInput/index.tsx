@@ -1,3 +1,4 @@
+/* eslint-disable react-native/no-inline-styles */
 import React from 'react'
 import {
   NativeSyntheticEvent,
@@ -19,6 +20,7 @@ interface OwnProps {
   onChangeText?: (value: string) => void
   onFocus?: (e: NativeSyntheticEvent<TextInputFocusEventData>) => void
   onBlur?: (e: NativeSyntheticEvent<TextInputFocusEventData>) => void
+  onEndEdditting?: (e: NativeSyntheticEvent<TextInputFocusEventData>) => void
   childrenLeft?: React.ReactNode
   childrenLeftStyle?: StyleProp<ViewStyle>
   childrenRight?: React.ReactNode
@@ -26,6 +28,8 @@ interface OwnProps {
   textInputStyle?: StyleProp<ViewStyle>
   containerViewInputStyle?: StyleProp<ViewStyle>
   errorText?: string
+  errorTextStyle?: StyleProp<TextStyle>
+  editable?: boolean
 }
 
 type Props = OwnProps
@@ -35,6 +39,7 @@ export const TextInputComponent: React.FunctionComponent<Props> = (props) => {
     onFocus,
     onBlur,
     onChangeText = (_value: string) => {},
+    onEndEdditting,
     placeholder = '...Nhập giá trị',
     value,
     childrenLeft,
@@ -44,6 +49,8 @@ export const TextInputComponent: React.FunctionComponent<Props> = (props) => {
     textInputStyle,
     containerViewInputStyle,
     errorText,
+    errorTextStyle,
+    editable = true,
   } = props
 
   const onFocusCustom = (e: any) => {
@@ -58,10 +65,18 @@ export const TextInputComponent: React.FunctionComponent<Props> = (props) => {
     }
   }
 
+  const onEndEditting = (e: any) => {
+    if (onEndEdditting) {
+      onEndEdditting(e)
+    }
+  }
+
   return (
     <View style={{ flex: 1, justifyContent: 'center' }}>
       <View style={[styles.container, containerViewInputStyle]}>
-        <View style={[childrenLeftStyle]}>{childrenLeft}</View>
+        {childrenLeft && (
+          <View style={[childrenLeftStyle]}>{childrenLeft}</View>
+        )}
         <View style={[styles.textInput, textInputStyle]}>
           <TextInput
             value={value}
@@ -69,15 +84,21 @@ export const TextInputComponent: React.FunctionComponent<Props> = (props) => {
             placeholder={placeholder}
             onFocus={onFocusCustom}
             onBlur={onBlurCustom}
+            onEndEditing={onEndEditting}
             style={[styles.input]}
+            editable={editable}
           />
         </View>
-        <View style={[childrenRightStyle]}>{childrenRight}</View>
+        {childrenRight && (
+          <View style={[childrenRightStyle]}>{childrenRight}</View>
+        )}
       </View>
       {errorText ? (
-        <Text style={styles.errorTxt}>{errorText}</Text>
+        <Text style={[styles.errorTxt, errorTextStyle]}>{errorText}</Text>
       ) : (
-        <Text style={[styles.errorTxt, { opacity: 0 }]}>hide</Text>
+        <Text style={[styles.errorTxt, errorTextStyle, { opacity: 0 }]}>
+          hide
+        </Text>
       )}
     </View>
   )
