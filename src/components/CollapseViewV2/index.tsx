@@ -17,23 +17,33 @@ const textDataDemo =
   'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.'
 
 export const CollapseViewV2: React.FunctionComponent<Props> = (props) => {
+  const [collapsed, setCollapsed] = useState<boolean>(true)
+  const toggleCollapsed = () => {
+    setCollapsed(!collapsed)
+  }
+
   const {
     lineDefault = 2,
     textData = textDataDemo,
     textMore = 'More',
     textCollapse = 'Collapse',
     icons = [
-      <Icons.AntDesign name='caretdown' color={'black'} size={14} />,
-      <Icons.AntDesign name='caretup' color={'black'} size={14} />,
+      <Icons.AntDesign
+        name='caretdown'
+        color={'black'}
+        size={14}
+        onPress={toggleCollapsed}
+      />,
+      <Icons.AntDesign
+        name='caretup'
+        color={'black'}
+        size={14}
+        onPress={toggleCollapsed}
+      />,
     ],
   } = props
-  const [collapsed, setCollapsed] = useState<boolean>(true)
   const [maxLines, setMaxLines] = useState<number>(lineDefault)
   const animationHeight = useRef(new Animated.Value(0)).current
-
-  const toggleCollapsed = () => {
-    setCollapsed(!collapsed)
-  }
 
   const collapseView = useCallback(() => {
     Animated.timing(animationHeight, {
@@ -69,7 +79,9 @@ export const CollapseViewV2: React.FunctionComponent<Props> = (props) => {
         </Text>
       </Animated.View>
       {icons ? (
-        renderIconCollapseOrExpand
+        <View style={{ justifyContent: 'center', alignItems: 'center' }}>
+          {renderIconCollapseOrExpand}
+        </View>
       ) : (
         <Text onPress={toggleCollapsed} style={styles.textMoreOrCollapse}>
           {collapsed ? textMore : textCollapse}

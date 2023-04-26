@@ -1,10 +1,11 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import {
   Image,
   SafeAreaView,
   ScrollView,
   StatusBar,
   Text,
+  TouchableOpacity,
   View,
   useColorScheme,
 } from 'react-native'
@@ -15,6 +16,7 @@ import RNModuleTemplateModule, {
   CollapseView,
   CollapseViewV2,
   RadioComponent,
+  ModalComponent,
 } from 'rn-components_dtc'
 import { Colors, Header } from 'react-native/Libraries/NewAppScreen'
 import { Icons } from '../../src/themes'
@@ -27,6 +29,8 @@ const App = () => {
   const backgroundStyle = {
     backgroundColor: isDarkMode ? Colors.darker : Colors.lighter,
   }
+
+  const [isVisible, setisVisible] = useState<boolean>(false)
 
   return (
     <SafeAreaView style={backgroundStyle}>
@@ -99,7 +103,7 @@ const App = () => {
             <ImageCpn typeVectorIcon='AntDesign' iconName='minus' />
             <CollapseViewV2 />
             <RadioComponent
-              titleLeft={'Chỉ chặng bay thẳng'}
+              titleLeft={'Test radio button'}
               customStyleContainer={{ marginTop: 10 }}
               value={null}
               onChangeSwitch={(bool) => {
@@ -107,7 +111,22 @@ const App = () => {
               }}
             />
           </View>
+          <Button
+            text='Open modal'
+            onPressBtn={() => {
+              setisVisible(!isVisible)
+            }}
+            btnStyle={{ margin: 10, padding: 10 }}
+          />
         </View>
+        <ModalComponent
+          isVisible={isVisible}
+          isShowButtonAccpet
+          hasCancelButton
+          titlePopup={'Test modal'}
+          onPressBtnAccept={() => setisVisible(false)}
+          customStyleBtnAccept={{ backgroundColor: 'pink' }}
+        />
       </ScrollView>
     </SafeAreaView>
   )

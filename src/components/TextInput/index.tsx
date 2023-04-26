@@ -27,6 +27,7 @@ interface OwnProps {
   childrenRightStyle?: StyleProp<ViewStyle>
   textInputStyle?: StyleProp<ViewStyle>
   containerViewInputStyle?: StyleProp<ViewStyle>
+  isShowErrorText?: boolean
   errorText?: string
   errorTextStyle?: StyleProp<TextStyle>
   editable?: boolean
@@ -48,6 +49,7 @@ export const TextInputComponent: React.FunctionComponent<Props> = (props) => {
     childrenRightStyle,
     textInputStyle,
     containerViewInputStyle,
+    isShowErrorText = false,
     errorText,
     errorTextStyle,
     editable = true,
@@ -93,7 +95,7 @@ export const TextInputComponent: React.FunctionComponent<Props> = (props) => {
           <View style={[childrenRightStyle]}>{childrenRight}</View>
         )}
       </View>
-      {errorText ? (
+      {isShowErrorText ? (
         <Text style={[styles.errorTxt, errorTextStyle]}>{errorText}</Text>
       ) : (
         <Text style={[styles.errorTxt, errorTextStyle, { opacity: 0 }]}>
