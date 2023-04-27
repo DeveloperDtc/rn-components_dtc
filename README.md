@@ -31,28 +31,6 @@ If you are having trouble with iOS, try to reinstall the dependencies by running
 ## Usage/Examples
 
 ```javascript
-import React, { useEffect, useState } from 'react'
-import {
-  Image,
-  SafeAreaView,
-  ScrollView,
-  StatusBar,
-  Text,
-  TouchableOpacity,
-  View,
-  useColorScheme,
-} from 'react-native'
-import RNModuleTemplateModule, {
-  Button,
-  TextInputComponent,
-  ImageCpn,
-  CollapseView,
-  CollapseViewV2,
-  RadioComponent,
-  ModalComponent,
-} from 'rn-components_dtc'
-import { Colors, Header } from 'react-native/Libraries/NewAppScreen'
-import { Icons } from '../../src/themes'
 
 const App = () => {
   useEffect(() => {
@@ -64,6 +42,30 @@ const App = () => {
   }
 
   const [isVisible, setisVisible] = useState<boolean>(false)
+  const [checked, setChecked] = useState<boolean>(false)
+
+  const Test = () => {
+    return <Text>test right custom children</Text>
+  }
+
+  const data = [
+    {
+      key: 1,
+      text: 'Option A',
+    },
+    {
+      key: 2,
+      text: 'Option B',
+    },
+    {
+      key: 3,
+      text: 'Option C',
+    },
+  ]
+
+  const onRadioButtonPress = (itemIdx: any) => {
+    console.log('Clicked', itemIdx)
+  }
 
   return (
     <SafeAreaView style={backgroundStyle}>
@@ -151,6 +153,18 @@ const App = () => {
             }}
             btnStyle={{ margin: 10, padding: 10 }}
           />
+          <Checkbox
+            leftText='left'
+            checked={checked}
+            onChecked={setChecked}
+            childrenRight={<Test />}
+          />
+          <MultiRadioButton
+            isSwapTextToLeft={false}
+            values={data}
+            onPress={onRadioButtonPress}
+          />
+        
         </View>
         <ModalComponent
           isVisible={isVisible}
@@ -166,6 +180,7 @@ const App = () => {
 }
 
 export default App
+
 
 ```
 
