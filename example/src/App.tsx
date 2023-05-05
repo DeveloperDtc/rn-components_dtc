@@ -5,7 +5,7 @@ import {
   StatusBar,
   Text,
   View,
-  useColorScheme
+  useColorScheme,
 } from 'react-native'
 import { Colors, Header } from 'react-native/Libraries/NewAppScreen'
 import RNModuleTemplateModule, {
@@ -13,6 +13,7 @@ import RNModuleTemplateModule, {
   Checkbox,
   CollapseView,
   CollapseViewV2,
+  DropdownListCustom,
   ImageCpn,
   ModalComponent,
   MultiRadioButton,
@@ -55,6 +56,15 @@ const App = () => {
   const onRadioButtonPress = (itemIdx: any) => {
     console.log('Clicked', itemIdx)
   }
+
+  const [selected, setSelected] = useState<any>(undefined)
+  const dataDropdown: any = [
+    { label: 'One', value: '1' },
+    { label: 'Two', value: '2' },
+    { label: 'Three', value: '3' },
+    { label: 'Four', value: '4' },
+    { label: 'Five', value: '5' },
+  ]
 
   return (
     <SafeAreaView style={backgroundStyle}>
@@ -153,7 +163,6 @@ const App = () => {
             values={data}
             onPress={onRadioButtonPress}
           />
-        
         </View>
         <ModalComponent
           isVisible={isVisible}
@@ -163,6 +172,27 @@ const App = () => {
           onPressBtnAccept={() => setisVisible(false)}
           customStyleBtnAccept={{ backgroundColor: 'pink' }}
         />
+        <View
+          style={{
+            flex: 1,
+            backgroundColor: '#fff',
+            alignItems: 'center',
+            justifyContent: 'center',
+            flexDirection: 'column',
+            marginBottom: 300,
+          }}
+        >
+          {!!selected && (
+            <Text>
+              Selected: label = {selected.label} and value = {selected.value}
+            </Text>
+          )}
+          <DropdownListCustom
+            label='Select Item'
+            data={dataDropdown}
+            onSelect={setSelected}
+          />
+        </View>
       </ScrollView>
     </SafeAreaView>
   )
