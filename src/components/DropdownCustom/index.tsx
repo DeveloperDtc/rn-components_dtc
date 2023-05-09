@@ -2,10 +2,13 @@ import React, { FunctionComponent, ReactElement, useRef, useState } from 'react'
 import {
   FlatList,
   Modal,
+  StyleProp,
   StyleSheet,
   Text,
+  TextStyle,
   TouchableOpacity,
   View,
+  ViewStyle,
 } from 'react-native'
 
 import { Icons } from '../../themes'
@@ -14,11 +17,13 @@ interface OwnProps {
   label?: string
   data: Array<{ label: string; value: string }>
   onSelect: (item: { label: string; value: string }) => void
+  itemListStyle?: StyleProp<ViewStyle>
+  itemTextStyle?: StyleProp<TextStyle>
 }
 
 type Props = OwnProps
 export const DropdownListCustom: FunctionComponent<Props> = (props) => {
-  const { data, label, onSelect } = props
+  const { data, label, onSelect, itemTextStyle, itemListStyle } = props
   const [visible, setVisible] = useState<boolean>(false)
   const DropdownButton = useRef<any>(null)
   const [dropdownTop, setDropdownTop] = useState<number>(0)
@@ -44,8 +49,11 @@ export const DropdownListCustom: FunctionComponent<Props> = (props) => {
   }
 
   const renderItem = ({ item }: { item: any }): ReactElement<any, any> => (
-    <TouchableOpacity style={styles.item} onPress={() => onItemPress(item)}>
-      <Text>{item.label}</Text>
+    <TouchableOpacity
+      style={[styles.item, itemListStyle]}
+      onPress={() => onItemPress(item)}
+    >
+      <Text style={[itemTextStyle]}>{item.label}</Text>
     </TouchableOpacity>
   )
 

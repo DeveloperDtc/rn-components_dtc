@@ -66,6 +66,9 @@
     ]
   },
   "dependencies": {
+    "moti": "^0.25.3",
+    "react-native-gesture-handler": "^2.9.0",
+    "react-native-reanimated": "^3.1.0",
     "react-native-vector-icons": "^9.2.0"
   }
 }

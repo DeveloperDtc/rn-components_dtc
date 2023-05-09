@@ -13,6 +13,7 @@ import {
   MultiRadioButton,
   RadioButton,
   RadioComponent,
+  SwitchRC,
   TextInputComponent,
 } from './components'
 import { useBoolean } from './hooks'
@@ -30,6 +31,7 @@ export {
   MultiRadioButton,
   RadioButton,
   RadioComponent,
+  SwitchRC,
   TextInputComponent,
   useBoolean,
 }
